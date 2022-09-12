@@ -16,16 +16,13 @@ class CreateCharactersTable extends Migration
         Schema::create('characters', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('user_id');
-            $table->foreignId('user_id')->constrained('users');
             $table->integer('level');
             $table->string('name');
             $table->string('gender');
             $table->integer('age');
             $table->string('height');
             $table->unsignedBigInteger('trait_id');
-            $table->foreignId('trait_id')->constrained('traits');
             $table->unsignedBigInteger('profile_id');
-            $table->foreignId('profile_id')->constrained('profiles');
         });
     }
 

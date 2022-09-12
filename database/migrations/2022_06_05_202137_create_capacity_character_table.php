@@ -16,9 +16,7 @@ class CreateCapacityCharacterTable extends Migration
         Schema::create('capacity_character', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('capacity_id');
-            $table->foreign('capacity_id')->references('id')->on('capacities');
             $table->unsignedBigInteger('character_id');
-            $table->foreign('character_id')->references('id')->on('characters');
         });
     }
 

@@ -16,9 +16,7 @@ class CreateAttributeCharacterTable extends Migration
         Schema::create('attribute_character', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('character_id');
-            $table->foreign('character_id')->references('id')->on('characters');
             $table->unsignedBigInteger('attribute_id');
-            $table->foreign('attribute_id')->references('id')->on('attributes');
             $table->integer('value');
             $table->integer('modificator');
         });
