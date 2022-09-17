@@ -18,7 +18,7 @@ class AuthController extends Controller
         {
             return response()->json(['message' => 'Identifiants incorrects']);
         }
-
-        return response()->json(['message' => 'utilisateur autorisé']);
+        
+        return $request->user()->createToken('authToken')->plainTextToken;
     }
 }
