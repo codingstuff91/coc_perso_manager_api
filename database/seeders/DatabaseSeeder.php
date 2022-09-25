@@ -22,5 +22,9 @@ class DatabaseSeeder extends Seeder
         Profile::factory(3)->create();
         Capacity::factory(4)->create();
         Character::factory(5)->create();
+
+        $this->call([
+            AttributeSeeder::class,
+        ]);
     }
 }
