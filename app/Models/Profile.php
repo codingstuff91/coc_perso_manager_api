@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Character;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Profile extends Model
 {
@@ -12,4 +13,9 @@ class Profile extends Model
     protected $guarded = [];
 
     public $timestamps = false;
+
+    public function character()
+    {
+        return $this->hasOne(Character::class);
+    }
 }

@@ -14,4 +14,9 @@ class Particularity extends Model
     public $timestamps = false;
 
     protected $table = "traits";
+
+    public function character()
+    {
+        return $this->hasOne(Character::class);
+    }
 }
