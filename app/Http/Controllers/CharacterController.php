@@ -14,7 +14,7 @@ class CharacterController extends Controller
      */
     public function index()
     {
-        return Character::all();
+        return Character::with(['profile', 'particularity'])->get();
     }
 
     /**
@@ -46,7 +46,7 @@ class CharacterController extends Controller
      */
     public function show(Character $character)
     {
-        //
+        return Character::with(['profile', 'particularity'])->where('id', $character->id)->get()->first();
     }
 
     /**

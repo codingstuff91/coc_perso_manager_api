@@ -22,6 +22,6 @@ class Character extends Model
 
     public function particularity()
     {
-        return $this->belongsTo(Particularity::class);
+        return $this->belongsTo(Particularity::class, 'trait_id');
     }
 }
