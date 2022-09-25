@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Profile;
+use App\Models\Capacity;
 use App\Models\Character;
 use App\Models\Particularity;
 use Illuminate\Database\Seeder;
@@ -19,6 +20,7 @@ class DatabaseSeeder extends Seeder
     {
         Particularity::factory(10)->create();
         Profile::factory(3)->create();
+        Capacity::factory(4)->create();
         Character::factory(5)->create();
     }
 }
