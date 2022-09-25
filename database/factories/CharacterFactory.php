@@ -19,7 +19,7 @@ class CharacterFactory extends Factory
             'user_id' => User::factory()->create(),
             'level' => $this->faker->numberBetween(1, 5),
             'name' => $this->faker->name,
-            'gender' => $this->faker->name,
+            'gender' => $this->faker->randomElement(['M', 'F']),
             'age' => $this->faker->numberBetween(25, 45),
             'height' => $this->faker->numberBetween(155, 195),
             'trait_id' => 1,
