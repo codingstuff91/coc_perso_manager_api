@@ -12,4 +12,9 @@ class Attribute extends Model
     protected $guarded = [];
 
     public $timestamps = false;
+
+    public function characters()
+    {
+        return $this->belongsToMany(Character::class);
+    }
 }

@@ -24,4 +24,9 @@ class Character extends Model
     {
         return $this->belongsTo(Particularity::class, 'trait_id');
     }
+
+    public function attributes()
+    {
+        return $this->belongsToMany(Attribute::class)->withPivot('value', 'modificator');;
+    }
 }
