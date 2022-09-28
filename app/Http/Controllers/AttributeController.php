@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attribute;
+use App\Models\Character;
 use Illuminate\Http\Request;
 
 class AttributeController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Fetch the attributes of a Character
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+
     }
 
     /**

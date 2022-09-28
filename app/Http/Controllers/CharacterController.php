@@ -46,7 +46,7 @@ class CharacterController extends Controller
      */
     public function show(Character $character)
     {
-        return Character::with(['profile', 'particularity'])->where('id', $character->id)->get()->first();
+        return Character::with(['profile', 'particularity', 'attributes'])->where('id', $character->id)->get()->first();
     }
 
     /**
@@ -81,5 +81,10 @@ class CharacterController extends Controller
     public function destroy(Character $character)
     {
         //
+    }
+
+    public function getAttributes(Character $character)
+    {
+        return $character->attributes;
     }
 }

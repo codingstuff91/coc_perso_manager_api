@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AttributeController;
 use App\Http\Controllers\CharacterController;
 
 /*
@@ -25,4 +26,7 @@ Route::prefix('auth')->group(function(){
     Route::post('register', [AuthController::class, 'register']);
 });
 
+Route::get('character/{character}/attributes', [CharacterController::class, 'getAttributes']);
 Route::resource('characters', CharacterController::class);
+
+Route::resource('attributes', AttributeController::class);
