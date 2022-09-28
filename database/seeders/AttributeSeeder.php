@@ -14,7 +14,25 @@ class AttributeSeeder extends Seeder
      */
     public function run()
     {
-        $attributes = ['Force', 'Dextérité', 'Constitution', 'Intelligence', 'Charisme', 'Intelligence'];
+        $attributes = [
+            'Force', 
+            'Dextérité', 
+            'Constitution', 
+            'Intelligence', 
+            'Charisme', 
+            'Intelligence',
+            'initiative',
+            'defense',
+            'attaque_contact',
+            'attaque_distance',
+            'attaque_mentale',
+            'de_de_vie',
+            'points_vie',
+            'blessure_grave',
+            'resistance_degats',
+            'ponts_chance',
+            'niveau_vie'
+        ];
 
         foreach ($attributes as $attribute) {
             Attribute::create([
