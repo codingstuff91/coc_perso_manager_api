@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Character;
 use Illuminate\Http\Request;
 
@@ -12,8 +13,9 @@ class CharacterController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
+        return $user->characters()->get();
         return Character::with(['profile', 'particularity'])->get();
     }
 

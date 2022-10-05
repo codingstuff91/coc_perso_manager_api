@@ -26,6 +26,8 @@ Route::prefix('auth')->group(function(){
     Route::post('register', [AuthController::class, 'register']);
 });
 
+Route::get('user/{user}/characters', [CharacterController::class, 'index']);
+
 Route::prefix('character')->group(function(){
     Route::get('{character}/attributes', [CharacterController::class, 'getAttributes']);
     Route::get('{character}/capacities', [CharacterController::class, 'capacities']);

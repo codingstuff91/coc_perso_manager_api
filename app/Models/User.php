@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Character;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -38,4 +39,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function characters()
+    {
+        return $this->belongsToMany(Character::class);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Weapon;
 use App\Models\Profile;
 use App\Models\Capacity;
@@ -17,6 +18,11 @@ class Character extends Model
     protected $guarded = [];
 
     public $timestamps = false;
+
+    public function user()
+    {
+        return $this->belongsToMany(User::class);
+    }
 
     public function profile()
     {
