@@ -46,7 +46,12 @@ class CharacterController extends Controller
      */
     public function show(Character $character)
     {
-        return Character::with(['profile', 'particularity', 'attributes'])->where('id', $character->id)->get()->first();
+        return Character::with([
+            'profile', 
+            'particularity', 
+            'attributes', 
+            'weapons'
+        ])->where('id', $character->id)->get()->first();
     }
 
     /**

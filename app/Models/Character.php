@@ -29,4 +29,9 @@ class Character extends Model
     {
         return $this->belongsToMany(Attribute::class)->withPivot('value', 'modificator');;
     }
+
+    public function weapons()
+    {
+        return $this->belongsToMany(Weapon::class);
+    }
 }
