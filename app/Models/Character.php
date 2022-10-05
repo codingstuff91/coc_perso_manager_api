@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Weapon;
 use App\Models\Profile;
+use App\Models\Capacity;
+use App\Models\Attribute;
 use App\Models\Particularity;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -33,5 +36,10 @@ class Character extends Model
     public function weapons()
     {
         return $this->belongsToMany(Weapon::class);
+    }
+
+    public function capacities()
+    {
+        return $this->belongsToMany(Capacity::class, 'capacity_character');
     }
 }
