@@ -28,9 +28,11 @@ class AttributeSeeder extends Seeder
             'attaque_mentale',
             'de_de_vie',
             'points_vie',
+            'points_vie_max',
             'blessure_grave',
             'resistance_degats',
-            'ponts_chance',
+            'points_chance',
+            'points_chance_max',
             'niveau_vie'
         ];
 
