@@ -39,7 +39,7 @@ class CharacterController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the character informations
      *
      * @param  \App\Models\Character  $character
      * @return \Illuminate\Http\Response
@@ -52,6 +52,20 @@ class CharacterController extends Controller
             'attributes', 
             'weapons'
         ])->where('id', $character->id)->get()->first();
+    }
+
+    /**
+     * Get all the capacities of a character
+     * 
+     * @param  \App\Models\Character  $character
+     * @return \Illuminate\Http\Response
+     */
+    public function capacities(Character $character)
+    {
+        return $character->capacities()
+                         ->orderBy('level')
+                         ->get()
+                         ->groupBy('name');
     }
 
     /**
