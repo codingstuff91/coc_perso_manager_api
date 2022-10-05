@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class WeaponFactory extends Factory
@@ -14,9 +15,9 @@ class WeaponFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
-            'dm_score' => $this->faker->unique()->safeEmail,
-            'attack_score' => now(),
+            'name' => $this->faker->word,
+            'dm_score' => Arr::random(['1D6', '2D10', '3D4']),
+            'attack_score' => Arr::random(['1D10', '2D10', '3D4']),
         ];
     }
 }

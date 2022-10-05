@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Weapon;
 use App\Models\Capacity;
 use App\Models\Character;
 use App\Models\Particularity;
@@ -24,10 +25,12 @@ class DatabaseSeeder extends Seeder
         Particularity::factory(10)->create();
         Capacity::factory(4)->create();
         Character::factory(5)->create();
+        Weapon::factory(4)->create();
 
         $this->call([
             AttributeSeeder::class,
-            AttributeCharacterSeeder::class
+            AttributeCharacterSeeder::class,
+            CharacterWeaponSeeder::class
         ]);
     }
 }
