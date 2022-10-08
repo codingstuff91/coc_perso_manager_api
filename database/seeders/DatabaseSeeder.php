@@ -30,7 +30,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AttributeSeeder::class,
             AttributeCharacterSeeder::class,
-            CharacterWeaponSeeder::class
+            CharacterWeaponSeeder::class,
+            CharacterUserSeeder::class
         ]);
     }
 }

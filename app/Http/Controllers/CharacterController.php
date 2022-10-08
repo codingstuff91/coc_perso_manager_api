@@ -16,7 +16,6 @@ class CharacterController extends Controller
     public function index(User $user)
     {
         return $user->characters()->get();
-        return Character::with(['profile', 'particularity'])->get();
     }
 
     /**
