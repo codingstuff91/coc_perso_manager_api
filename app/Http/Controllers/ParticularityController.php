@@ -36,7 +36,7 @@ class ParticularityController extends Controller
      */
     public function edit(Particularity $particularity)
     {
-        //
+        return $particularity;
     }
 
     /**
@@ -48,7 +48,12 @@ class ParticularityController extends Controller
      */
     public function update(Request $request, Particularity $particularity)
     {
-        //
+        $particularity->update([
+            'name' => $request->name,
+            'description' => $request->description
+        ]);
+
+        return response()->json(['message' => 'trait édité avec succès']);
     }
 
     /**
