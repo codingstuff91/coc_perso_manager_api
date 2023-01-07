@@ -31,7 +31,8 @@ class DatabaseSeeder extends Seeder
             AttributeSeeder::class,
             AttributeCharacterSeeder::class,
             CharacterWeaponSeeder::class,
-            CharacterUserSeeder::class
+            CharacterUserSeeder::class,
+            CharacterCapacitySeeder::class
         ]);
     }
 }
