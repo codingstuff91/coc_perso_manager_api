@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\Weapon;
+use App\Models\Advantage;
 use App\Models\Capacity;
 use App\Models\Character;
-use App\Models\Particularity;
+use App\Models\Weapon;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,13 +15,13 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $this->call([
-            ProfileSeeder::class
+            ProfileSeeder::class,
         ]);
-        
-        Particularity::factory(10)->create();
+
+        Advantage::factory(10)->create();
         Capacity::factory(4)->create();
         Character::factory(5)->create();
         Weapon::factory(4)->create();
@@ -32,7 +31,7 @@ class DatabaseSeeder extends Seeder
             AttributeCharacterSeeder::class,
             CharacterWeaponSeeder::class,
             CharacterUserSeeder::class,
-            CharacterCapacitySeeder::class
+            CharacterCapacitySeeder::class,
         ]);
     }
 }

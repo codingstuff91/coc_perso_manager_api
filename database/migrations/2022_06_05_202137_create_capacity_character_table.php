@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Capacity;
+use App\Models\Character;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,12 +13,12 @@ class CreateCapacityCharacterTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('capacity_character', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedBigInteger('capacity_id');
-            $table->unsignedBigInteger('character_id');
+        Schema::create('capacity_character', static function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(Capacity::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignIdFor(Character::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
@@ -25,7 +27,7 @@ class CreateCapacityCharacterTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('capacity_character');
     }

@@ -2,20 +2,25 @@
 
 namespace App\Models;
 
-use App\Models\Character;
-use Illuminate\Database\Eloquent\Model;
+use App\Traits\Relations\HasOne\HasOneCharacter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
     use HasFactory;
+    use HasOneCharacter;
 
-    protected $guarded = [];
-
+    /**
+     * @var bool
+     */
     public $timestamps = false;
 
-    public function character()
-    {
-        return $this->hasOne(Character::class);
-    }
+    /**
+     * @var string[]
+     */
+    protected $fillable = [
+        'name',
+        'description',
+    ];
 }

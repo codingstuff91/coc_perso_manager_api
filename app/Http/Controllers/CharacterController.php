@@ -2,108 +2,63 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Models\Character;
-use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Response;
 
 class CharacterController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param User $user
+     *
+     * @return Collection|Character[]
      */
-    public function index(User $user)
+    public function index(User $user): Collection
     {
         return $user->characters()->get();
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display the character information
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
+     * @param Character $character
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the character informations
-     *
-     * @param  \App\Models\Character  $character
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Character $character)
+    public function show(Character $character): Response
     {
         return Character::with([
-            'profile', 
-            'particularity', 
-            'attributes', 
-            'weapons'
+            'profile',
+            'particularity',
+            'attributes',
+            'weapons',
         ])->where('id', $character->id)->get()->first();
     }
 
     /**
      * Get all the capacities of a character
-     * 
-     * @param  \App\Models\Character  $character
-     * @return \Illuminate\Http\Response
+     *
+     * @param Character $character
+     *
+     * @return Collection
      */
-    public function capacities(Character $character)
+    public function capacities(Character $character): Collection
     {
         return $character->capacities()
-                         ->orderBy('level')
-                         ->get()
-                         ->groupBy('name');
+            ->orderBy('level')
+            ->get()
+            ->groupBy('name');
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * @param Character $character
      *
-     * @param  \App\Models\Character  $character
-     * @return \Illuminate\Http\Response
+     * @return array
      */
-    public function edit(Character $character)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Character  $character
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Character $character)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Character  $character
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Character $character)
-    {
-        //
-    }
-
-    public function getAttributes(Character $character)
+    public function getAttributes(Character $character): array
     {
         return $character->attributes;
     }

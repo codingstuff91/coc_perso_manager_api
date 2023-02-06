@@ -11,10 +11,10 @@ class CreateAttributesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('attributes', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('attributes', static function (Blueprint $table) {
+            $table->id();
             $table->string('name');
             $table->string('description')->nullable();
         });
@@ -25,7 +25,7 @@ class CreateAttributesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('attributes');
     }

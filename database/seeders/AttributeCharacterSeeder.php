@@ -14,21 +14,18 @@ class AttributeCharacterSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        $attributes = Attribute::all();
+        $attributes = Attribute::pluck('id');
+        $characters = Character::pluck('id');
 
-        $characters = Character::all();
-
-        foreach ($characters as $character) 
-        {
-            foreach ($attributes as $attribute)
-            {
+        foreach ($characters as $character) {
+            foreach ($attributes as $attribute) {
                 DB::table('attribute_character')->insert([
-                    "character_id" => $character->id,
-                    "attribute_id" => $attribute->id,
-                    "value" => 10,
-                    "modificator" => 0
+                    'character_id' => $character,
+                    'attribute_id' => $attribute,
+                    'value'        => 10,
+                    'modificator'  => 0,
                 ]);
             }
         }

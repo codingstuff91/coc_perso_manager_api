@@ -11,10 +11,10 @@ class CreateCapacitiesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('capacities', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('capacities', static function (Blueprint $table) {
+            $table->id();
             $table->string('name');
             $table->integer('level');
             $table->text('description');
@@ -26,7 +26,7 @@ class CreateCapacitiesTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('capacities');
     }
