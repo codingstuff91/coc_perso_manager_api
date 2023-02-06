@@ -11,10 +11,10 @@ class CreateAttributeCharacterTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('attribute_character', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('attribute_character', static function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('character_id');
             $table->unsignedBigInteger('attribute_id');
             $table->integer('value');
@@ -27,7 +27,7 @@ class CreateAttributeCharacterTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('attribute_character');
     }

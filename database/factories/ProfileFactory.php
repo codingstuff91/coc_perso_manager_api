@@ -11,10 +11,10 @@ class ProfileFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            'name' => $this->faker->word,
+            'name'        => $this->faker->word,
             'description' => $this->faker->paragraph(2),
         ];
     }

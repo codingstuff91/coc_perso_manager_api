@@ -4,17 +4,17 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTraitsTable extends Migration
+class CreateAdvantagesTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('traits', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('advantages', static function (Blueprint $table) {
+            $table->id();
             $table->string('name');
             $table->string('description');
         });
@@ -25,8 +25,8 @@ class CreateTraitsTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('traits');
+        Schema::dropIfExists('advantages');
     }
 }

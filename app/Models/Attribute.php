@@ -2,19 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Traits\Relations\BelongsToMany\BelongsToManyCharacters;
 use Illuminate\Database\Eloquent\Model;
 
 class Attribute extends Model
 {
-    use HasFactory;
+    use BelongsToManyCharacters;
 
-    protected $guarded = [];
-
+    /**
+     * @var bool
+     */
     public $timestamps = false;
 
-    public function characters()
-    {
-        return $this->belongsToMany(Character::class);
-    }
+    /**
+     * @var string[]
+     */
+    protected $fillable = [
+        'name',
+        'description',
+    ];
+
 }

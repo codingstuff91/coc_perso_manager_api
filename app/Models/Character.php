@@ -2,50 +2,49 @@
 
 namespace App\Models;
 
-use App\Models\User;
-use App\Models\Weapon;
-use App\Models\Profile;
-use App\Models\Capacity;
-use App\Models\Attribute;
-use App\Models\Particularity;
-use Illuminate\Database\Eloquent\Model;
+use App\Traits\Relations\BelongsTo\BelongsToAdvantage;
+use App\Traits\Relations\BelongsTo\BelongsToProfile;
+use App\Traits\Relations\BelongsToMany\BelongsToManyAttributes;
+use App\Traits\Relations\BelongsToMany\BelongsToManyCapacities;
+use App\Traits\Relations\BelongsToMany\BelongsToManyUsers;
+use App\Traits\Relations\BelongsToMany\BelongsToManyWeapons;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Character extends Model
 {
     use HasFactory;
+    use BelongsToManyUsers;
+    use BelongsToProfile;
+    use BelongsToAdvantage;
+    use BelongsToManyAttributes;
+    use BelongsToManyWeapons;
+    use BelongsToManyCapacities;
 
-    protected $guarded = [];
-
+    /**
+     * @var bool
+     */
     public $timestamps = false;
 
-    public function user()
-    {
-        return $this->belongsToMany(User::class);
-    }
+    /**
+     * @var string[]
+     */
+    protected $fillable = [
+        'user_id',
+        'level',
+        'name',
+        'gender',
+        'age',
+        'height',
+        'profile_id',
+        'advantage_id',
+    ];
 
-    public function profile()
-    {
-        return $this->belongsTo(Profile::class);
-    }
-
-    public function particularity()
-    {
-        return $this->belongsTo(Particularity::class, 'trait_id');
-    }
-
-    public function attributes()
-    {
-        return $this->belongsToMany(Attribute::class)->withPivot('value', 'modificator');;
-    }
-
-    public function weapons()
-    {
-        return $this->belongsToMany(Weapon::class);
-    }
-
-    public function capacities()
-    {
-        return $this->belongsToMany(Capacity::class, 'capacity_character');
-    }
+    /**
+     * @var string[]
+     */
+    protected $casts = [
+        'level' => 'integer',
+        'age'   => 'integer',
+    ];
 }

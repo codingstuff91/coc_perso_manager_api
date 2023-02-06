@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use App\Models\Character;
 use App\Models\Character_user;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CharacterUserSeeder extends Seeder
 {
@@ -14,16 +15,16 @@ class CharacterUserSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        Character_user::create([
-            'user_id' => User::first()->id,
-            'character_id' => Character::all()->random(1)->first()->id
+        DB::table('character_user')->insert([
+            'user_id'      => User::first()->id,
+            'character_id' => Character::inRandomOrder()->first()->id,
         ]);
 
-        Character_user::create([
-            'user_id' => User::first()->id,
-            'character_id' => Character::all()->random(1)->first()->id
+        DB::table('character_user')->insert([
+            'user_id'      => User::first()->id,
+            'character_id' => Character::inRandomOrder()->first()->id,
         ]);
     }
 }

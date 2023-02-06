@@ -2,13 +2,18 @@
 
 namespace App\Models;
 
+use App\Traits\Relations\HasOne\HasOneCharacter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Capacity extends Model
+class Advantage extends Model
 {
     use HasFactory;
+    use HasOneCharacter;
 
+    /**
+     * @var bool
+     */
     public $timestamps = false;
 
     /**
@@ -16,14 +21,6 @@ class Capacity extends Model
      */
     protected $fillable = [
         'name',
-        'level',
         'description',
-    ];
-
-    /**
-     * @var string[]
-     */
-    protected $casts = [
-        'level' => 'integer',
     ];
 }

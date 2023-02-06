@@ -11,11 +11,11 @@ class CapacityFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            'name' => $this->faker->word,
-            'level' => $this->faker->numberBetween(1, 5),
+            'name'        => $this->faker->word,
+            'level'       => $this->faker->numberBetween(1, 5),
             'description' => $this->faker->paragraph(1),
         ];
     }

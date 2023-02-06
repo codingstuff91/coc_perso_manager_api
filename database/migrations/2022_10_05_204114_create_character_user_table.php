@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Character;
+use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,12 +13,12 @@ class CreateCharacterUserTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('character_user', function (Blueprint $table) {
+        Schema::create('character_user', static function (Blueprint $table) {
             $table->id();
-            $table->integer('character_id');
-            $table->integer('user_id');
+            $table->foreignIdFor(Character::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignIdFor(User::class)->constrained()->cascadeOnUpdate()->cascadeOnDelete();
         });
     }
 
@@ -25,7 +27,7 @@ class CreateCharacterUserTable extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::dropIfExists('character_user');
     }

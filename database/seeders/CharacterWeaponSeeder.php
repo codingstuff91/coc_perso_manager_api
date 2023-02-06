@@ -2,10 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Weapon;
 use App\Models\Character;
-use Illuminate\Database\Seeder;
 use App\Models\Character_weapon;
+use App\Models\Weapon;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CharacterWeaponSeeder extends Seeder
 {
@@ -14,15 +15,14 @@ class CharacterWeaponSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        $characters = Character::all();
+        $characters = Character::pluck('id');
 
-        foreach ($characters as $character) 
-        {
-            Character_weapon::create([
-                'character_id' => $character->id,
-                'weapon_id' => Weapon::all()->random()->id
+        foreach ($characters as $character) {
+            DB::table('character_weapon')->insert([
+                'character_id' => $character,
+                'weapon_id'    => Weapon::inRandomOrder()->first()->id,
             ]);
         }
     }
